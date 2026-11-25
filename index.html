@@ -1,0 +1,879 @@
+<!-- Declara ao navegador que este documento é do tipo HTML5 moderno -->
+<!DOCTYPE html>
+<!-- Tag raiz que engloba todo o código do site e define o idioma para Português do Brasil -->
+<html lang="pt-BR">
+<!-- O bloco 'head' guarda as configurações técnicas do site que não aparecem diretamente na tela -->
+<!-- O bloco 'head' guarda as configurações técnicas do site que não aparecem diretamente na tela -->
+<head>
+    <!-- Define a codificação de caracteres UTF-8 para aceitar acentos e e-cedilha sem quebrar -->
+    <meta charset="UTF-8">
+    <!-- Configura a janela de exibição para ajustar o zoom e tamanho do site em telas de celular -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Define o título que aparece na aba do navegador do usuário -->
+    <title>Kora | Plataforma Gamificada de Saúde e Exercícios</title>
+    <!-- Resumo da página que aparece nos resultados de busca do Google -->
+    <meta name="description" content="Plataforma gamificada que incentiva jovens a cuidarem da saúde por meio de treinos, XP, níveis, conquistas e recompensas.">
+    <!-- Palavras-chave associadas ao site para mecanismos de busca -->
+    <meta name="keywords" content="saúde, exercícios físicos, gamificação, treinos, XP, bem-estar, fitness, jovens">
+    <!-- Identifica o autor ou empresa responsável pela criação da página -->
+    <meta name="author" content="Kora">
+    <!-- Instrução para os robôs do Google indexarem o site e seguirem seus links -->
+    <meta name="robots" content="index, follow">
+
+    <!-- Define a URL Canônica para evitar problemas de conteúdo duplicado no Google -->
+    <link rel="canonical" href="https://www.korasaude.com.br/">
+
+    <!-- Define a cor da barra de navegação superior nos celulares (Safari/Chrome Mobile) -->
+    <meta name="theme-color" content="#5b2c9e">
+
+    <!-- Configurações do protocolo Open Graph para pré-visualização ao compartilhar no Facebook e WhatsApp -->
+    <!-- Define que o tipo de conteúdo compartilhado é um site -->
+    <meta property="og:type" content="website">
+    <!-- Define o link oficial (URL) da página inicial do site -->
+    <meta property="og:url" content="https://www.korasaude.com.br/">
+    <!-- Título exibido no cartão do anúncio ao compartilhar nas redes sociais -->
+    <meta property="og:title" content="Kora | Saúde e Exercícios Gamificados">
+    <!-- Descrição exibida no cartão do anúncio nas redes sociais -->
+    <meta property="og:description" content="Transforme seus treinos em conquistas épicas. Acumule XP, suba de nível e desbloqueie recompensas cuidando da sua saúde.">
+    <!-- Link para a foto/imagem de capa que aparece no compartilhamento -->
+    <meta property="og:image" content="https://www.korasaude.com.br/assets/og-image.jpg">
+    <!-- [NOVO/MELHORIA]: Define o idioma regional das pré-visualizações nas redes sociais -->
+    <meta property="og:locale" content="pt_BR">
+    <!-- [NOVO/MELHORIA]: Especifica a largura ideal em pixels da imagem para o WhatsApp/Facebook carregar instantaneamente -->
+    <meta property="og:image:width" content="1200">
+    <!-- [NOVO/MELHORIA]: Especifica a altura ideal em pixels da imagem de compartilhamento -->
+    <meta property="og:image:height" content="630">
+
+    <!-- Configurações para pré-visualização ao compartilhar no Twitter / X -->
+    <!-- Exibe a imagem de compartilhamento em formato grande -->
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- Link de destino da página no Twitter -->
+    <meta name="twitter:url" content="https://www.korasaude.com.br/">
+    <!-- Título do cartão no Twitter -->
+    <meta name="twitter:title" content="Kora | Saúde e Exercícios Gamificados">
+    <!-- Descrição do cartão no Twitter -->
+    <meta name="twitter:description" content="Registre atividades físicas, ganhe XP e evolua de nível na Kora!">
+    <!-- Imagem usada no cartão do Twitter -->
+    <meta name="twitter:image" content="https://www.korasaude.com.br/assets/og-image.jpg">
+
+    <!-- Conecta a folha de estilos CSS externa que traz o visual e as cores do site -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Carrega o JavaScript sem bloquear o carregamento da página e executa assim que o HTML for lido (defer) -->
+    <script src="./js/js.js" defer></script>
+
+    <!-- Define o pequeno ícone que aparece na aba do navegador (Favicon em formato SVG) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+	<!-- ABERTURA DOS IDENTIFICADORES DE CÓDIGO DE DADOS ESTRUTURADOS (SCHEMA.ORG / JSON-LD) -->
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@graph": 
+		[
+			{
+				"@type": "WebApplication",
+				"@id": "https://www.korasaude.com.br/#inicio",
+				"name": "Kora",
+				"url": "https://www.korasaude.com.br",
+				"logo": "https://www.korasaude.com.br/images/logo.png",
+				"image": "https://www.korasaude.com.br/images/foto-app.jpg",
+				"description": "Plataforma gamificada de saúde e exercícios físicos para jovens.",
+				"applicationCategory": "HealthApplication",
+				"operatingSystem": "Web",
+				"email": "contato@korasaude.com.br"
+			},
+			{
+				"@type": "Service",
+				"@id": "https://www.korasaude.com.br/#servico-principal",
+				"name": "Acompanhamento de Exercícios Gamificado",
+				"serviceType": "Saúde e Bem-Estar",
+				"provider":
+				{
+					"@id": "https://www.korasaude.com.br/#inicio"
+				},
+				"description": "Sistema de registro de treinos com ganho de XP, evolução de níveis e conquistas.",
+				"areaServed":
+				{
+					"@type": "Country",
+					"name": "Brasil"
+				}
+			},
+			{
+				"@type": "FAQPage",
+				"@id": "https://www.korasaude.com.br/#faq",
+				"mainEntity":
+				[
+					{
+						"@type": "Question",
+						"name": "Como funciona o sistema de XP na Kora?",
+						"acceptedAnswer":
+						{
+							"@type": "Answer",
+							"text": "Ao registrar suas atividades físicas, como caminhadas, corridas ou treinos, você acumula pontos de experiência (XP) e sobe de nível."
+						}
+					},
+					{
+						"@type": "Question",
+						"name": "Como desbloqueio conquistas?",
+						"acceptedAnswer":
+						{
+							"@type": "Answer",
+							"text": "Mantendo a constância nos treinos e atingindo metas de atividades, você libera medalhas e recompensas exclusivas."
+						}
+					}
+				]
+			}
+		]
+	}
+	</script> 	<!-- ENCERRAMENTO DO CÓDIGO DE DADOS ESTRUTURADOS (SCHEMA.ORG / JSON-LD) -->
+</head>
+
+<!-- Elemento body: contêiner principal para todo o conteúdo visível e interativo da aplicação -->
+<body>
+
+    <!-- Link de atalho invisível para acessibilidade -->
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <!-- BARRA DE NAVEGAÇÃO DA KORA (No telemóvel fica em baixo, no PC fica no topo) -->
+    <header class="site-header">
+        <div class="container header-container">
+           <a href="#home"
+   class="logo js-spa-nav"
+   data-target="home"
+   aria-label="Kora - Página Inicial">
+                <span class="logo-icon" aria-hidden="true">⚡</span>
+                <span class="logo-text"><strong>Kora</strong></span>
+            </a>
+
+            <nav class="main-nav" aria-label="Navegação Principal">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link active" data-target="home">Início</a></li>
+                    <li><a href="#servicos" class="nav-link" data-target="servicos">Treinos & XP</a></li>
+                    <li><a href="#sobre" class="nav-link" data-target="sobre">Conquistas</a></li>
+                    <li><a href="#contato" class="nav-link" data-target="contato">Registrar</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Região principal de conteúdo -->
+    <main id="main-content" class="site-main container" tabindex="-1">
+
+      
+<!-- ==========================================================
+     SEÇÃO 1: INÍCIO (HOME) - PÁGINA PRINCIPAL DA KORA
+     ========================================================== -->
+<section id="home" class="spa-section active-section" aria-labelledby="home-title">
+
+    <!-- BANNER PRINCIPAL DE APRESENTAÇÃO -->
+    <header class="hero-banner">
+        <mark class="hero-badge">Sua jornada começa aqui</mark>
+
+        <h1 id="home-title">
+            Transforme seus treinos em conquistas!
+        </h1>
+
+        <p class="hero-subtitle">
+            Cuide do seu corpo, complete desafios, acumule XP
+            e evolua de nível enquanto constrói hábitos saudáveis.
+        </p>
+
+        <div class="hero-actions">
+            <a href="#servicos"
+               class="btn btn-primary js-spa-nav"
+               data-target="servicos">
+                Começar a treinar
+            </a>
+
+            <a href="#sobre"
+               class="btn btn-outline js-spa-nav"
+               data-target="sobre">
+                Ver minhas conquistas
+            </a>
+        </div>
+    </header>
+
+    <!-- RESUMO DA EVOLUÇÃO DO JOGADOR -->
+    <section aria-labelledby="progress-title">
+
+        <header class="section-header">
+            <h2 id="progress-title">Sua evolução</h2>
+            <p>Acompanhe seu progresso e continue avançando!</p>
+        </header>
+
+        <ul class="highlights-grid">
+
+            <!-- CARTÃO: NÍVEL ATUAL -->
+            <li class="highlight-card">
+                <div class="card-icon" aria-hidden="true">🏆</div>
+
+                <h3>Nível atual</h3>
+
+                <p class="stat-number" id="user-level">1</p>
+
+                <p class="stat-label">Iniciante</p>
+            </li>
+
+            <!-- CARTÃO: XP ACUMULADO -->
+            <li class="highlight-card">
+                <div class="card-icon" aria-hidden="true">⚡</div>
+
+                <h3>XP acumulado</h3>
+
+                <p class="stat-number" id="user-xp">0</p>
+
+                <p class="stat-label">Pontos de experiência</p>
+            </li>
+
+            <!-- CARTÃO: TREINOS CONCLUÍDOS -->
+            <li class="highlight-card">
+                <div class="card-icon" aria-hidden="true">🔥</div>
+
+                <h3>Treinos concluídos</h3>
+
+                <p class="stat-number" id="user-workouts">0</p>
+
+                <p class="stat-label">Atividades realizadas</p>
+            </li>
+
+        </ul>
+    </section>
+
+    <!-- BARRA DE PROGRESSO DO PRÓXIMO NÍVEL -->
+    <section class="highlight-card" aria-labelledby="next-level-title">
+
+        <h2 id="next-level-title">Próximo nível</h2>
+
+        <p>
+            Continue treinando para alcançar o próximo nível!
+        </p>
+
+        <div class="progress-info">
+            <span id="current-xp">0 XP</span>
+            <span id="next-level-xp">100 XP</span>
+        </div>
+
+        <progress
+            id="level-progress"
+            value="0"
+            max="100"
+            aria-label="Progresso para o próximo nível">
+            0%
+        </progress>
+
+    </section>
+
+    <!-- DESTAQUES DA PLATAFORMA -->
+    <section aria-labelledby="features-title">
+
+        <header class="section-header">
+            <h2 id="features-title">O que você pode conquistar?</h2>
+            <p>Pequenos passos podem levar a grandes resultados.</p>
+        </header>
+
+        <ul class="highlights-grid">
+
+            <li class="highlight-card">
+                <div class="card-icon" aria-hidden="true">💪</div>
+                <h3>Complete treinos</h3>
+                <p>
+                    Escolha atividades físicas do catálogo
+                    e registre seus exercícios.
+                </p>
+            </li>
+
+            <li class="highlight-card">
+                <div class="card-icon" aria-hidden="true">⭐</div>
+                <h3>Acumule experiência</h3>
+                <p>
+                    Ganhe XP ao concluir atividades e
+                    acompanhe sua evolução.
+                </p>
+            </li>
+
+            <li class="highlight-card">
+                <div class="card-icon" aria-hidden="true">🎖️</div>
+                <h3>Desbloqueie conquistas</h3>
+                <p>
+                    Alcance objetivos e receba recompensas
+                    especiais durante sua jornada.
+                </p>
+            </li>
+
+        </ul>
+    </section>
+
+</section>
+
+       
+<!-- ==========================================================
+     SEÇÃO 2: TREINOS & XP - CATÁLOGO DE EXERCÍCIOS
+     ========================================================== -->
+<section id="servicos" class="spa-section" aria-labelledby="servicos-title" hidden>
+
+    <!-- CABEÇALHO DA PÁGINA -->
+    <header class="section-header">
+        <h2 id="servicos-title">Treinos & XP</h2>
+        <p>
+            Escolha uma atividade, movimente-se e transforme
+            seu esforço em pontos de experiência!
+        </p>
+    </header>
+
+    <!-- CATÁLOGO DE EXERCÍCIOS DISPONÍVEIS -->
+    <section aria-labelledby="catalog-title">
+
+        <header class="section-header">
+            <h2 id="catalog-title">Escolha seu exercício</h2>
+            <p>Selecione uma das atividades disponíveis na Kora.</p>
+        </header>
+
+        <div class="services-grid">
+
+            <!-- EXERCÍCIO: CAMINHADA -->
+            <article class="service-card">
+                <div class="service-icon" aria-hidden="true">🚶</div>
+
+                <h3>Caminhada</h3>
+
+                <p>
+                    Uma atividade leve para movimentar o corpo,
+                    melhorar o condicionamento e cuidar da saúde.
+                </p>
+
+                <ul class="service-features">
+                    <li>Atividade aeróbica</li>
+                    <li>Ideal para iniciantes</li>
+                    <li>XP fixo + XP por duração</li>
+                </ul>
+            </article>
+
+            <!-- EXERCÍCIO: CORRIDA -->
+            <article class="service-card">
+                <div class="service-icon" aria-hidden="true">🏃</div>
+
+                <h3>Corrida</h3>
+
+                <p>
+                    Aumente sua resistência física e desafie
+                    seus limites com uma atividade dinâmica.
+                </p>
+
+                <ul class="service-features">
+                    <li>Atividade aeróbica</li>
+                    <li>Desenvolve resistência</li>
+                    <li>XP fixo + XP por duração</li>
+                </ul>
+            </article>
+
+            <!-- EXERCÍCIO: FLEXÕES -->
+            <article class="service-card">
+                <div class="service-icon" aria-hidden="true">💪</div>
+
+                <h3>Flexões</h3>
+
+                <p>
+                    Exercício que trabalha principalmente
+                    os músculos do peito, braços e ombros.
+                </p>
+
+                <ul class="service-features">
+                    <li>Exercício de força</li>
+                    <li>Trabalha membros superiores</li>
+                    <li>XP fixo + XP por duração</li>
+                </ul>
+            </article>
+
+            <!-- EXERCÍCIO: AGACHAMENTOS -->
+            <article class="service-card">
+                <div class="service-icon" aria-hidden="true">🦵</div>
+
+                <h3>Agachamentos</h3>
+
+                <p>
+                    Fortaleça as pernas e trabalhe os músculos
+                    inferiores utilizando o peso do próprio corpo.
+                </p>
+
+                <ul class="service-features">
+                    <li>Exercício de força</li>
+                    <li>Trabalha membros inferiores</li>
+                    <li>XP fixo + XP por duração</li>
+                </ul>
+            </article>
+
+            <!-- EXERCÍCIO: ABDOMINAIS -->
+            <article class="service-card">
+                <div class="service-icon" aria-hidden="true">🔥</div>
+
+                <h3>Abdominais</h3>
+
+                <p>
+                    Exercício voltado ao fortalecimento
+                    da musculatura abdominal.
+                </p>
+
+                <ul class="service-features">
+                    <li>Fortalecimento muscular</li>
+                    <li>Trabalha a região abdominal</li>
+                    <li>XP fixo + XP por duração</li>
+                </ul>
+            </article>
+
+            <!-- EXERCÍCIO: POLICHINELOS -->
+            <article class="service-card">
+                <div class="service-icon" aria-hidden="true">⭐</div>
+
+                <h3>Polichinelos</h3>
+
+                <p>
+                    Atividade dinâmica que movimenta diferentes
+                    grupos musculares e eleva o ritmo cardíaco.
+                </p>
+
+                <ul class="service-features">
+                    <li>Atividade aeróbica</li>
+                    <li>Movimenta o corpo todo</li>
+                    <li>XP fixo + XP por duração</li>
+                </ul>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- FORMULÁRIO PARA REGISTRAR UM TREINO -->
+    <section aria-labelledby="workout-title">
+
+        <header class="section-header">
+            <h2 id="workout-title">Registrar meu treino</h2>
+            <p>
+                Informe a atividade realizada e quanto tempo
+                você dedicou a ela.
+            </p>
+        </header>
+
+        <div class="contact-form-wrapper">
+
+            <form id="workout-form" class="contact-form" novalidate>
+
+                <fieldset style="border:none; padding:0; margin:0;">
+
+                    <legend class="sr-only">
+                        Formulário de registro de atividade física
+                    </legend>
+
+                    <h3>Detalhes da atividade</h3>
+
+                    <!-- ÁREA DE FEEDBACK DO TREINO -->
+                    <div
+                        id="workout-feedback"
+                        class="form-feedback"
+                        role="status"
+                        aria-live="polite"
+                        hidden>
+                    </div>
+
+                    <!-- CAMPO: ESCOLHA DO EXERCÍCIO -->
+                    <div class="form-group">
+
+                        <label for="workout-exercise">
+                            Exercício <span class="required" aria-hidden="true">*</span>
+                        </label>
+
+                        <select
+                            id="workout-exercise"
+                            name="exercise"
+                            required
+                            aria-required="true">
+
+                            <option value="" disabled selected>
+                                Selecione um exercício...
+                            </option>
+
+                            <option value="caminhada">Caminhada</option>
+                            <option value="corrida">Corrida</option>
+                            <option value="flexoes">Flexões</option>
+                            <option value="agachamentos">Agachamentos</option>
+                            <option value="abdominais">Abdominais</option>
+                            <option value="polichinelos">Polichinelos</option>
+
+                        </select>
+
+                    </div>
+
+                    <!-- CAMPO: DURAÇÃO DO EXERCÍCIO -->
+                    <div class="form-group">
+
+                        <label for="workout-duration">
+                            Duração do treino <span class="required" aria-hidden="true">*</span>
+                        </label>
+
+                        <select
+                            id="workout-duration"
+                            name="duration"
+                            required
+                            aria-required="true">
+
+                            <option value="" disabled selected>
+                                Selecione a duração...
+                            </option>
+
+                            <option value="5">5 minutos</option>
+                            <option value="10">10 minutos</option>
+                            <option value="15">15 minutos</option>
+                            <option value="20">20 minutos</option>
+                            <option value="30">30 minutos</option>
+                            <option value="45">45 minutos</option>
+                            <option value="60">60 minutos</option>
+
+                        </select>
+
+                    </div>
+
+                    <!-- EXPLICAÇÃO DO SISTEMA DE XP -->
+                    <aside class="cta-box">
+
+                        <h3>⚡ Como funciona o XP?</h3>
+
+                        <p>
+                            Ao concluir uma atividade, você recebe
+                            pontos fixos pelo exercício e pontos
+                            adicionais conforme a duração do treino.
+                        </p>
+
+                    </aside>
+
+                    <!-- BOTÃO PARA CONCLUIR O TREINO -->
+                    <button
+                        type="submit"
+                        class="btn btn-primary btn-block">
+                        Concluir treino e ganhar XP
+                    </button>
+
+                </fieldset>
+
+            </form>
+
+        </div>
+    </section>
+
+</section>
+
+
+      
+<!-- ==========================================================
+     SEÇÃO 3: CONQUISTAS - METAS E RECOMPENSAS DO USUÁRIO
+     ========================================================== -->
+<section id="sobre" class="spa-section" aria-labelledby="sobre-title" hidden>
+
+    <!-- CABEÇALHO DA PÁGINA -->
+    <header class="section-header">
+        <h2 id="sobre-title">Suas Conquistas</h2>
+        <p>
+            Complete objetivos, supere suas metas e ganhe XP
+            por cada conquista alcançada.
+        </p>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL DAS CONQUISTAS -->
+    <div class="about-content">
+
+        <!-- TEXTO DE APRESENTAÇÃO -->
+        <article class="about-text">
+            <h3>Desafios de atividade física</h3>
+            <p>
+                Cada objetivo alcançado representa uma evolução na sua jornada.
+                Complete desafios de distância, exercícios e constância
+                para desbloquear conquistas e receber XP.
+            </p>
+        </article>
+
+        <!-- LISTA DE CONQUISTAS E RECOMPENSAS -->
+        <dl class="about-values">
+
+            <!-- CONQUISTA: DISTÂNCIA PERCORRIDA -->
+            <div class="value-card">
+                <dt><h4>🏃 5 km percorridos</h4></dt>
+                <dd>
+                    <p>Acumule 5 quilômetros entre caminhadas e corridas.</p>
+
+                    <!-- BARRA DE PROGRESSO DA CONQUISTA -->
+                    <label for="progress-distance">Progresso: 2,5 / 5 km</label>
+                    <progress id="progress-distance" value="2.5" max="5">50%</progress>
+
+                    <!-- RECOMPENSA EM XP -->
+                    <p><strong>Recompensa: +100 XP</strong></p>
+
+                    <!-- BOTÃO DA CONQUISTA -->
+                    <button type="button" class="btn btn-outline">
+                        Ver conquista
+                    </button>
+                </dd>
+            </div>
+
+            <!-- CONQUISTA: EXERCÍCIOS REALIZADOS -->
+            <div class="value-card">
+                <dt><h4>💪 100 exercícios realizados</h4></dt>
+                <dd>
+                    <p>Complete 100 exercícios físicos, como flexões, agachamentos e abdominais.</p>
+
+                    <!-- BARRA DE PROGRESSO DA CONQUISTA -->
+                    <label for="progress-exercises">Progresso: 45 / 100 exercícios</label>
+                    <progress id="progress-exercises" value="45" max="100">45%</progress>
+
+                    <!-- RECOMPENSA EM XP -->
+                    <p><strong>Recompensa: +100 XP</strong></p>
+
+                    <!-- BOTÃO DA CONQUISTA -->
+                    <button type="button" class="btn btn-outline">
+                        Ver conquista
+                    </button>
+                </dd>
+            </div>
+
+            <!-- CONQUISTA: CONSTÂNCIA SEMANAL -->
+            <div class="value-card">
+                <dt><h4>🔥 Semana ativa</h4></dt>
+                <dd>
+                    <p>Conclua pelo menos 3 treinos durante a mesma semana.</p>
+
+                    <!-- BARRA DE PROGRESSO DA CONQUISTA -->
+                    <label for="progress-week">Progresso: 2 / 3 treinos</label>
+                    <progress id="progress-week" value="2" max="3">66%</progress>
+
+                    <!-- RECOMPENSA EM XP -->
+                    <p><strong>Recompensa: +150 XP</strong></p>
+
+                    <!-- BOTÃO DA CONQUISTA -->
+                    <button type="button" class="btn btn-outline">
+                        Ver conquista
+                    </button>
+                </dd>
+            </div>
+
+            <!-- CONQUISTA: TEMPO DE ATIVIDADE -->
+            <div class="value-card">
+                <dt><h4>⏱️ 5 horas de atividade</h4></dt>
+                <dd>
+                    <p>Acumule 300 minutos de atividades físicas registradas.</p>
+
+                    <!-- BARRA DE PROGRESSO DA CONQUISTA -->
+                    <label for="progress-time">Progresso: 120 / 300 minutos</label>
+                    <progress id="progress-time" value="120" max="300">40%</progress>
+
+                    <!-- RECOMPENSA EM XP -->
+                    <p><strong>Recompensa: +150 XP</strong></p>
+
+                    <!-- BOTÃO DA CONQUISTA -->
+                    <button type="button" class="btn btn-outline">
+                        Ver conquista
+                    </button>
+                </dd>
+            </div>
+
+            <!-- CONQUISTA: META SEMANAL COMPLETA -->
+            <div class="value-card">
+                <dt><h4>⭐ Meta semanal completa</h4></dt>
+                <dd>
+                    <p>Alcance a meta semanal de exercícios estabelecida pela plataforma.</p>
+
+                    <!-- BARRA DE PROGRESSO DA CONQUISTA -->
+                    <label for="progress-goal">Progresso: 3 / 5 treinos</label>
+                    <progress id="progress-goal" value="3" max="5">60%</progress>
+
+                    <!-- RECOMPENSA EM XP -->
+                    <p><strong>Recompensa: +200 XP</strong></p>
+
+                    <!-- BOTÃO DA CONQUISTA -->
+                    <button type="button" class="btn btn-outline">
+                        Ver conquista
+                    </button>
+                </dd>
+            </div>
+
+            <!-- CONQUISTA: TREINOS CONCLUÍDOS -->
+            <div class="value-card">
+                <dt><h4>🏆 10 treinos concluídos</h4></dt>
+                <dd>
+                    <p>Registre 10 atividades físicas para demonstrar sua dedicação.</p>
+
+                    <!-- BARRA DE PROGRESSO DA CONQUISTA -->
+                    <label for="progress-workouts">Progresso: 7 / 10 treinos</label>
+                    <progress id="progress-workouts" value="7" max="10">70%</progress>
+
+                    <!-- RECOMPENSA EM XP -->
+                    <p><strong>Recompensa: +100 XP</strong></p>
+
+                    <!-- BOTÃO DA CONQUISTA -->
+                    <button type="button" class="btn btn-outline">
+                        Ver conquista
+                    </button>
+                </dd>
+            </div>
+
+        </dl>
+    </div>
+
+</section>
+
+
+<!-- ==========================================================
+     SEÇÃO 4: REGISTRAR - CADASTRO DE USUÁRIO
+     ========================================================== -->
+<section id="contato" class="spa-section" aria-labelledby="contato-title" hidden>
+
+    <!-- CABEÇALHO DA PÁGINA -->
+    <header class="section-header">
+        <h2 id="contato-title">Crie sua conta na Kora</h2>
+        <p>
+            Cadastre-se para iniciar sua jornada, registrar treinos,
+            acumular XP e desbloquear conquistas.
+        </p>
+    </header>
+
+    <!-- ÁREA PRINCIPAL DO FORMULÁRIO DE CADASTRO -->
+    <div class="contact-form-wrapper">
+
+        <!-- FORMULÁRIO DE CRIAÇÃO DE CONTA -->
+        <form id="contact-form" class="contact-form" novalidate>
+
+            <!-- AGRUPAMENTO DOS CAMPOS DO CADASTRO -->
+            <fieldset style="border:none; padding:0; margin:0;">
+
+                <!-- LEGENDA ACESSÍVEL DO FORMULÁRIO -->
+                <legend class="sr-only">
+                    Formulário de criação de conta Kora
+                </legend>
+
+                <h3>Dados da sua conta</h3>
+
+                <!-- ÁREA DE FEEDBACK DO CADASTRO -->
+                <div
+                    id="form-feedback"
+                    class="form-feedback"
+                    role="alert"
+                    aria-live="polite"
+                    hidden>
+                </div>
+
+                <!-- CAMPO: NOME DO USUÁRIO -->
+                <div class="form-group">
+
+                    <label for="nome">
+                        Nome de usuário <span class="required" aria-hidden="true">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        required
+                        aria-required="true"
+                        autocomplete="username"
+                        placeholder="Escolha seu nome de usuário">
+
+                    <!-- ÁREA DE ERRO DO NOME -->
+                    <span class="error-message" id="error-nome" aria-live="polite"></span>
+
+                </div>
+
+                <!-- CAMPO: E-MAIL -->
+                <div class="form-group">
+
+                    <label for="email">
+                        E-mail <span class="required" aria-hidden="true">*</span>
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        inputmode="email"
+                        required
+                        aria-required="true"
+                        autocomplete="email"
+                        placeholder="exemplo@email.com">
+
+                    <!-- ÁREA DE ERRO DO E-MAIL -->
+                    <span class="error-message" id="error-email" aria-live="polite"></span>
+
+                </div>
+
+                <!-- CAMPO: SENHA -->
+                <div class="form-group">
+
+                    <label for="senha">
+                        Senha <span class="required" aria-hidden="true">*</span>
+                    </label>
+
+                    <input
+                        type="password"
+                        id="senha"
+                        name="senha"
+                        required
+                        aria-required="true"
+                        autocomplete="new-password"
+                        placeholder="Crie sua senha">
+
+                </div>
+
+                <!-- CAMPO: CONFIRMAÇÃO DE SENHA -->
+                <div class="form-group">
+
+                    <label for="confirmar-senha">
+                        Confirmar senha <span class="required" aria-hidden="true">*</span>
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmar-senha"
+                        name="confirmar-senha"
+                        required
+                        aria-required="true"
+                        autocomplete="new-password"
+                        placeholder="Digite sua senha novamente">
+
+                </div>
+
+                <!-- EXPLICAÇÃO SOBRE A PLATAFORMA -->
+                <aside class="cta-box">
+
+                    <h3>⚡ Sua jornada começa aqui!</h3>
+
+                    <p>
+                        Crie sua conta para acompanhar seus treinos,
+                        acumular XP, subir de nível e conquistar
+                        seus objetivos dentro da Kora.
+                    </p>
+
+                </aside>
+
+                <!-- BOTÃO PARA CRIAR A CONTA -->
+                <button type="submit" class="btn btn-primary btn-block">
+                    Criar minha conta
+                </button>
+
+            </fieldset>
+
+        </form>
+
+    </div>
+
+</section>
+
+</main>
+
+<!-- Rodapé semântico (footer) contendo informações de direitos autorais e encerramento -->
+<footer class="site-footer">
+    <!-- Div de invólucro para limitação de largura e alinhamento do rodapé -->
+    <div class="container footer-content">
+        <!-- Parágrafo com elemento small para indicar termos/direitos legais e time para o ano atual -->
+        <p><small>&copy; <time datetime="2026">2026</time> Kora. Todos os direitos reservados.</small></p>
+        <!-- Slogan institucional de encerramento no rodapé -->
+        <p class="footer-tagline">Pequenos passos, grandes conquistas.</p>
+    </div>
+</footer>
+
+</body>
+</html>

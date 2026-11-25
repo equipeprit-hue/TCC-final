@@ -1,0 +1,1209 @@
+/* ==========================================================================
+   ARTE & MADEIRA MARCENARIA - CSS DIDÁTICO
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. VARIÁVEIS DE CORES E CONFIGURAÇÕES GERAIS
+   As variáveis funcionam como "caixinhas" onde guardamos cores e tamanhos
+   para reutilizar no código sem precisar repetir o mesmo código várias vezes.
+   -------------------------------------------------------------------------- */
+:root {
+/* Cor principal (Roxo elegante) */
+--color-primary: #51416F;
+
+/* Roxo mais escuro para hover */
+--color-primary-dark: #382B50;
+
+/* Roxo mais claro para destaques */
+--color-primary-light: #8066A6;
+
+/* Cinza grafite para detalhes */
+--color-secondary: #34343D;
+
+/* Lavanda para brilho e elementos de destaque */
+--color-accent: #B69AD9;
+
+/* Fundo da página */
+--color-bg: #F5F3F8;
+
+/* Fundo dos cartões */
+--color-surface: #FFFFFF;
+
+/* Fundo secundário */
+--color-surface-alt: #EAE6F0;
+
+/* Texto principal */
+--color-text-main: #25212B;
+
+/* Texto secundário */
+--color-text-muted: #625B6B;
+
+/* Bordas das caixas */
+--color-border: #D8D1E1;          
+    
+    /* Cor para mensagens de erro (vermelho) */
+    --color-error: #b91c1c;            
+    /* Cor para mensagens de sucesso (verde) */
+    --color-success: #15803d;          
+    /* Cor do contorno de seleção por teclado (azul bem visível) */
+    --color-focus: #2563eb;            
+
+    /* Fontes padrão do sistema do usuário (Arial, Segoe UI, etc.) */
+    --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    /* Fonte elegante para os títulos (estilo jornal/livro) */
+    --font-family-heading: "Georgia", "Times New Roman", serif;
+    
+    /* Largura máxima que o conteúdo do site pode atingir na tela */
+    --container-max-width: 1140px;
+    /* Altura do menu no celular */
+    --header-height-mobile: 65px;
+    /* Altura do menu no computador */
+    --header-height-desktop: 80px;
+    /* Arredondamento pequeno nas pontas das caixas */
+    --border-radius-sm: 6px;
+    /* Arredondamento médio nas pontas */
+    --border-radius-md: 12px;
+    /* Arredondamento grande nas pontas */
+    --border-radius-lg: 20px;
+    /* Sombra suave atrás das caixas */
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    /* Sombra mais forte quando passa o mouse */
+    --box-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+    /* Velocidade de animação rápida */
+    --transition-fast: 0.2s ease;
+    /* Velocidade de animação normal */
+    --transition-normal: 0.3s ease;
+}
+
+/* --------------------------------------------------------------------------
+   2. REINICIALIZAÇÃO E REGRAS BÁSICAS
+   Ajustes iniciais para todos os navegadores começarem do mesmo jeito.
+   -------------------------------------------------------------------------- */
+/* O símbolo * seleciona absolutamente TODOS os elementos do site */
+*, *::before, *::after {
+    /* Inclui bordas e espaçamentos internos no cálculo do tamanho final da caixa */
+    box-sizing: border-box;
+    /* Remove margens externas padrão do navegador */
+    margin: 0;
+    /* Remove espaçamentos internos padrão do navegador */
+    padding: 0;
+}
+
+/* Garante que o atributo 'hidden' do HTML esconda as seções desativadas */
+[hidden] {
+    display: none !important;
+}
+
+/* Regras aplicadas na tag principal HTML */
+html {
+    /* Faz a tela rolar suavemente ao clicar em links internos */
+    scroll-behavior: smooth;
+    /* Define o tamanho padrão do texto do site para 100% (16 pixels) */
+    font-size: 100%;
+}
+
+/* Regras aplicadas ao corpo inteiro da página */
+body {
+    /* Define a fonte padrão que será usada em todo o texto */
+    font-family: var(--font-family-base);
+    /* Define o tamanho do texto do corpo */
+    font-size: 1rem;
+    /* Define a altura da linha para o texto não ficar espremido */
+    line-height: 1.6;
+    /* Define a cor do texto do site */
+    color: var(--color-text-main);
+    /* Define a cor de fundo da página */
+    background-color: var(--color-bg);
+    /* Garante que o fundo ocupe no mínimo 100% da altura da tela */
+    min-height: 100vh;
+    /* Transforma o corpo em uma caixa flexível organizada em coluna */
+    display: flex;
+    /* Empilha os elementos um abaixo do outro */
+    flex-direction: column;
+    /* Cria um espaço no rodapé no celular para não cobrir o conteúdo com o menu */
+    padding-bottom: var(--header-height-mobile);
+    /* Esconde qualquer barra de rolagem horizontal indesejada */
+    overflow-x: hidden;
+}
+
+/* Destaque visual para quem navega usando a tecla TAB do teclado */
+:focus-visible {
+    /* Desenha uma linha azul grossa em volta do elemento selecionado */
+    outline: 3px solid var(--color-focus);
+    /* Afasta a linha do contorno do elemento */
+    outline-offset: 3px;
+}
+
+/* Botão invisível para deficientes visuais pularem direto para o conteúdo */
+.skip-link {
+    /* Tira o botão da posição comum da página */
+    position: absolute;
+    /* Joga o botão para fora da tela (para cima) */
+    top: -100px;
+    /* Distância da esquerda */
+    left: 10px;
+    /* Cor de fundo do botão */
+    background: var(--color-text-main);
+    /* Cor do texto do botão */
+    color: #ffffff;
+    /* Espaçamento interno (em cima/baixo e lados) */
+    padding: 12px 20px;
+    /* Coloca o botão acima de qualquer outro elemento da tela */
+    z-index: 9999;
+    /* Deixa o texto em negrito */
+    font-weight: bold;
+    /* Arredonda as pontas */
+    border-radius: var(--border-radius-sm);
+    /* Remove o sublinhado do link */
+    text-decoration: none;
+    /* Anima a descida do botão quando selecionado */
+    transition: top var(--transition-fast);
+}
+
+/* Quando o botão invisível recebe foco pelo teclado */
+.skip-link:focus {
+    /* Faz o botão aparecer na parte superior da tela */
+    top: 10px;
+}
+
+/* Títulos do site (H1, H2, H3, H4) */
+h1, h2, h3, h4 {
+    /* Usa a fonte elegante estilo Georgia */
+    font-family: var(--font-family-heading);
+    /* Define a cor dos títulos */
+    color: var(--color-primary-dark);
+    /* Ajusta o espaçamento das linhas do título */
+    line-height: 1.25;
+    /* Cria um espaço abaixo do título */
+    margin-bottom: 0.75rem;
+    /* Quebra palavras muito grandes para não estourarem a tela */
+    overflow-wrap: anywhere;
+    /* Força a quebra de texto se necessário */
+    word-break: break-word;
+}
+
+/* Ajustes de tamanho individual para cada nível de título */
+h1 { font-size: 2.1rem; font-weight: 700; }
+h2 { font-size: 1.75rem; font-weight: 700; }
+h3 { font-size: 1.35rem; font-weight: 600; }
+h4 { font-size: 1.15rem; font-weight: 600; }
+
+/* Parágrafos de texto */
+p {
+    /* Espaço abaixo de cada parágrafo */
+    margin-bottom: 1rem;
+    /* Cor do texto */
+    color: var(--color-text-main);
+    /* Quebra textos longos automaticamente */
+    overflow-wrap: anywhere;
+    /* Permite a quebra de palavras */
+    word-break: break-word;
+}
+
+/* Links em geral */
+a {
+    /* Cor do link */
+    color: var(--color-primary);
+    /* Adiciona linha sublinhada no link */
+    text-decoration: underline;
+    /* Suaviza a troca de cor ao passar o mouse */
+    transition: color var(--transition-fast);
+    /* Evita que links longos estoure a tela no celular */
+    overflow-wrap: anywhere;
+    /* Quebra o link em duas linhas se não couber */
+    word-break: break-word;
+}
+
+/* Quando passa o mouse por cima do link */
+a:hover {
+    /* Muda para a cor marrom mais escura */
+    color: var(--color-primary-dark);
+}
+
+/* Listas (UL) */
+ul {
+    /* Remove as bolinhas/pontos padrão da lista */
+    list-style: none;
+}
+
+/* Caixas limitadoras do site (Container) */
+.container {
+    /* Ocupa toda a largura disponível */
+    width: 100%;
+    /* Mas não deixa passar do limite máximo configurado (1140px) */
+    max-width: var(--container-max-width);
+    /* Centraliza a caixa no meio da tela */
+    margin: 0 auto;
+    /* Cria uma folga interna nos lados esquerdo e direito */
+    padding: 0 1.25rem;
+    /* Inclui os paddings no cálculo da largura */
+    box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   3. CABEÇALHO E MENU DE NAVEGAÇÃO
+   -------------------------------------------------------------------------- */
+.site-header {
+    /* Cor de fundo do menu */
+    background-color: var(--color-surface);
+    /* Linha fina de borda no topo no celular */
+    border-top: 1px solid var(--color-border);
+    /* Fixa o menu em uma posição na tela */
+    position: fixed;
+    /* Gruda o menu no fundo da tela (para celulares) */
+    bottom: 0;
+    /* Estica até a borda esquerda */
+    left: 0;
+    /* Estica até a borda direita */
+    right: 0;
+    /* Ocupa 100% da largura da tela */
+    width: 100%;
+    /* Garante que o menu fique por cima do conteúdo ao rolar a página */
+    z-index: 1000;
+    /* Aplica uma sombra para dar efeito de elevação */
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    /* Ativa o modo flexível para alinhar a logo e o menu lado a lado */
+    display: flex;
+    /* Empurra os itens para as pontas opostas */
+    justify-content: space-between;
+    /* Alinha os itens no centro vertical */
+    align-items: center;
+    /* Define a altura da barra do menu no celular */
+    height: var(--header-height-mobile);
+}
+
+/* Esconde o texto da marca/logo no celular para economizar espaço */
+.site-header .logo {
+    display: none;
+}
+
+.main-nav {
+    /* Ocupa toda a largura disponível */
+    width: 100%;
+}
+
+.nav-list {
+    /* Ativa o modo flexível nos botões do menu */
+    display: flex;
+    /* Distribui os botões com espaços iguais entre eles */
+    justify-content: space-around;
+    /* Alinha verticalmente ao centro */
+    align-items: center;
+    /* Ocupa toda a largura */
+    width: 100%;
+}
+
+.nav-link {
+    /* Organiza o ícone e o texto do botão em coluna */
+    display: flex;
+    /* Empilha em coluna */
+    flex-direction: column;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
+    justify-content: center;
+    /* Cor do texto do botão */
+    color: var(--color-text-muted);
+    /* Remove a linha sublinhada do texto */
+    text-decoration: none;
+    /* Tamanho do texto */
+    font-size: 0.9rem;
+    /* Deixa o texto levemente em negrito */
+    font-weight: 600;
+    /* Espaçamento interno no botão */
+    padding: 8px 12px;
+    /* Arredonda levemente as pontas */
+    border-radius: var(--border-radius-sm);
+    /* Transição suave ao trocar de cor */
+    transition: all var(--transition-fast);
+    /* Permite posicionar elementos filhos com precisão */
+    position: relative;
+}
+
+/* Quando passa o mouse ou seleciona um botão do menu */
+.nav-link:hover,
+.nav-link:focus {
+    /* Muda a cor do texto para a cor principal */
+    color: var(--color-primary);
+    /* Muda o fundo do botão para a cor areia */
+    background-color: var(--color-surface-alt);
+}
+
+/* Botão da página que está atualmente aberta */
+.nav-link.active {
+    /* Cor mais escura para o botão ativo */
+    color: var(--color-primary-dark);
+    /* Deixa o texto em negrito forte */
+    font-weight: 700;
+}
+
+/* Linha decorativa no botão ativo */
+.nav-link.active::after {
+    /* Conteúdo do elemento falso (vazio) */
+    content: '';
+    /* Fixa o elemento em relação ao botão */
+    position: absolute;
+    /* Posiciona no topo do botão */
+    top: 0;
+    /* Recuo da esquerda */
+    left: 20%;
+    /* Recuo da direita */
+    right: 20%;
+    /* Espessura da linha */
+    height: 3px;
+    /* Cor da linha decorativa */
+    background-color: var(--color-primary);
+    /* Cantos levemente arredondados na linha */
+    border-radius: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   4. ESTRUTURA PRINCIPAL E ANIMAÇÕES DO SITE (SISTEMA SPA)
+   -------------------------------------------------------------------------- */
+.site-main {
+    /* Faz a área principal crescer e ocupar o espaço restante */
+    flex: 1;
+    /* Espaço superior antes do conteúdo */
+    padding-top: 1.5rem;
+    /* Espaço inferior */
+    padding-bottom: 2.5rem;
+}
+
+/* O Segredo do SPA: Esconde as páginas que não estão ativas */
+.spa-section {
+    /* Esconde a seção completamente por padrão */
+    display: none;
+    /* Aplica uma animação suave de surgimento ao aparecer */
+    animation: fadeIn var(--transition-normal);
+}
+
+/* Exibe apenas a página/seção que tiver esta classe */
+.spa-section.active-section {
+    /* Mostra a seção na tela como um bloco tradicional */
+    display: block;
+}
+
+/* Criação da animação de aparecimento suave */
+@keyframes fadeIn {
+    /* Como a seção começa */
+    from {
+        /* Totalmente transparente */
+        opacity: 0;
+        /* Levemente deslocada 6px para baixo */
+        transform: translateY(6px);
+    }
+    /* Como a seção termina */
+    to {
+        /* Totalmente opaca/visível */
+        opacity: 1;
+        /* Voltou para a posição normal */
+        transform: translateY(0);
+    }
+}
+
+.section-header {
+    /* Centraliza o texto do título da seção */
+    text-align: center;
+    /* Espaço abaixo do cabeçalho da seção */
+    margin-bottom: 2.25rem;
+}
+
+.section-header p {
+    /* Cor do subtítulo */
+    color: var(--color-text-muted);
+    /* Tamanho do texto */
+    font-size: 1.1rem;
+    /* Limita a largura para o texto não ficar muito longo */
+    max-width: 650px;
+    /* Centraliza o bloco do texto */
+    margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   5. SEÇÃO: INÍCIO (HERO E DESTAQUES)
+   -------------------------------------------------------------------------- */
+.hero-banner {
+    /* Fundo degradê em diagonal do marrom escuro ao marrom médio */
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    /* Cor do texto dentro do banner */
+    color: #ffffff;
+    /* Espaçamento interno do banner */
+    padding: 3rem 1.5rem;
+    /* Arredondamento dos cantos */
+    border-radius: var(--border-radius-md);
+    /* Centraliza o texto */
+    text-align: center;
+    /* Espaço abaixo do banner principal */
+    margin-bottom: 2.5rem;
+    /* Sombra projetada */
+    box-shadow: var(--box-shadow);
+}
+
+.hero-badge {
+    /* Permite ajustar espaçamentos no elemento */
+    display: inline-block;
+    /* Fundo branco transparente */
+    background-color: rgba(255, 255, 255, 0.15);
+    /* Cor do texto do selo */
+    color: #ffffff;
+    /* Espaçamento interno */
+    padding: 6px 16px;
+    /* Deixa o selo no formato de pílula (bem arredondado) */
+    border-radius: 50px;
+    /* Tamanho do texto */
+    font-size: 0.85rem;
+    /* Texto em negrito */
+    font-weight: 600;
+    /* Espaço entre as letras */
+    letter-spacing: 0.5px;
+    /* Força todas as letras para MAIÚSCULAS */
+    text-transform: uppercase;
+    /* Espaço abaixo do selo */
+    margin-bottom: 1.25rem;
+}
+
+.hero-banner h1 {
+    /* Cor do título principal no banner */
+    color: #ffffff;
+    /* Espaço abaixo do título */
+    margin-bottom: 1.25rem;
+}
+
+.hero-subtitle {
+    /* Branco levemente transparente para o subtítulo */
+    color: rgba(255, 255, 255, 0.9);
+    /* Tamanho da fonte */
+    font-size: 1.1rem;
+    /* Largura máxima do texto */
+    max-width: 700px;
+    /* Centraliza o bloco e cria espaço abaixo */
+    margin: 0 auto 2rem auto;
+}
+
+.hero-actions {
+    /* Ativa flexbox para alinhar os botões */
+    display: flex;
+    /* Empilha os botões no celular */
+    flex-direction: column;
+    /* Espaço entre os botões */
+    gap: 1rem;
+    /* Centraliza os botões */
+    justify-content: center;
+}
+
+.highlights-grid {
+    /* Ativa o sistema de grade (Grid) */
+    display: grid;
+    /* Cria 1 coluna no celular */
+    grid-template-columns: 1fr;
+    /* Espaço de distância entre os cartões de destaque */
+    gap: 1.5rem;
+}
+
+.highlight-card {
+    /* Fundo branco do cartão */
+    background-color: var(--color-surface);
+    /* Espaçamento interno do cartão */
+    padding: 1.75rem;
+    /* Cantos arredondados */
+    border-radius: var(--border-radius-md);
+    /* Borda fina em volta do cartão */
+    border: 1px solid var(--color-border);
+    /* Sombra suave */
+    box-shadow: var(--box-shadow);
+    /* Centraliza os ícones e textos do cartão */
+    text-align: center;
+}
+
+.card-icon {
+    /* Tamanho do ícone em emoji */
+    font-size: 2.5rem;
+    /* Espaço abaixo do ícone */
+    margin-bottom: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   6. SEÇÃO: SERVIÇOS
+   -------------------------------------------------------------------------- */
+.services-grid {
+    /* Ativa visualização em grade */
+    display: grid;
+    /* 1 coluna no celular */
+    grid-template-columns: 1fr;
+    /* Distância entre os cartões de serviços */
+    gap: 1.75rem;
+    /* Espaço abaixo da grade de serviços */
+    margin-bottom: 3rem;
+}
+
+.service-card {
+    /* Fundo do cartão de serviço */
+    background-color: var(--color-surface);
+    /* Borda suave */
+    border: 1px solid var(--color-border);
+    /* Cantos arredondados */
+    border-radius: var(--border-radius-md);
+    /* Espaço interno do cartão */
+    padding: 2rem;
+    /* Sombra do cartão */
+    box-shadow: var(--box-shadow);
+    /* Transição suave para o efeito de subir com o mouse */
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/* Efeito ao passar o mouse por cima do cartão de serviço */
+.service-card:hover {
+    /* Faz o cartão "subir" 4 pixels */
+    transform: translateY(-4px);
+    /* Aumenta a sombra projetada */
+    box-shadow: var(--box-shadow-hover);
+}
+
+.service-icon {
+    /* Tamanho grande para o ícone do serviço */
+    font-size: 2.75rem;
+    /* Espaço abaixo do ícone */
+    margin-bottom: 1rem;
+}
+
+.service-features {
+    /* Espaço acima da lista de vantagens do serviço */
+    margin-top: 1.25rem;
+    /* Espaço interno acima */
+    padding-top: 1rem;
+    /* Linha pontilhada separando a descrição das vantagens */
+    border-top: 1px dashed var(--color-border);
+}
+
+.service-features li {
+    /* Permite posicionar o ícone de "check" dentro do item */
+    position: relative;
+    /* Recuo à esquerda para dar espaço ao símbolo de check */
+    padding-left: 1.5rem;
+    /* Espaço abaixo de cada item da lista */
+    margin-bottom: 0.5rem;
+    /* Tamanho do texto */
+    font-size: 0.95rem;
+    /* Cor do texto da lista */
+    color: var(--color-text-muted);
+}
+
+/* Cria o símbolo de "visto/check" em verde antes de cada item */
+.service-features li::before {
+    /* Desenha o caractere de Visto */
+    content: "✓";
+    /* Fixa o visto na ponta esquerda do item */
+    position: absolute;
+    /* Alinha à esquerda */
+    left: 0;
+    /* Cor marrom para o visto */
+    color: var(--color-primary);
+    /* Texto em negrito no visto */
+    font-weight: bold;
+}
+
+.cta-box {
+    /* Fundo tom areia para a caixa de chamada para ação */
+    background-color: var(--color-surface-alt);
+    /* Borda pontilhada decorativa */
+    border: 2px dashed var(--color-primary-light);
+    /* Cantos arredondados */
+    border-radius: var(--border-radius-md);
+    /* Espaçamento interno */
+    padding: 2.5rem 1.5rem;
+    /* Alinha o texto ao centro */
+    text-align: center;
+}
+
+.cta-box h3 {
+    /* Espaço abaixo do título da caixa de chamada */
+    margin-bottom: 0.75rem;
+}
+
+.cta-box p {
+    /* Espaço abaixo do texto descritivo */
+    margin-bottom: 1.5rem;
+    /* Cor do texto */
+    color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   7. SEÇÃO: SOBRE NÓS
+   -------------------------------------------------------------------------- */
+.about-content {
+    /* Ativa flexbox */
+    display: flex;
+    /* Empilha os blocos no celular */
+    flex-direction: column;
+    /* Espaço entre os blocos */
+    gap: 2rem;
+}
+
+.about-text {
+    /* Fundo branco do cartão da história */
+    background-color: var(--color-surface);
+    /* Espaço interno */
+    padding: 2rem;
+    /* Cantos arredondados */
+    border-radius: var(--border-radius-md);
+    /* Borda suave */
+    border: 1px solid var(--color-border);
+    /* Sombra suave */
+    box-shadow: var(--box-shadow);
+}
+
+.stats-grid {
+    /* Ativa modo de grade */
+    display: grid;
+    /* Divide em 3 colunas de tamanhos iguais para os números */
+    grid-template-columns: repeat(3, 1fr);
+    /* Espaço entre as estatísticas */
+    gap: 1rem;
+    /* Espaço acima */
+    margin-top: 2rem;
+    /* Espaço interno superior */
+    padding-top: 1.5rem;
+    /* Linha divisória superior */
+    border-top: 1px solid var(--color-border);
+    /* Centraliza o texto das estatísticas */
+    text-align: center;
+}
+
+.stat-number {
+    /* Força o número a ficar numa linha só */
+    display: block;
+    /* Fonte estilo Georgia */
+    font-family: var(--font-family-heading);
+    /* Tamanho grande para destaque do número */
+    font-size: 1.8rem;
+    /* Negrito forte */
+    font-weight: bold;
+    /* Cor marrom */
+    color: var(--color-primary);
+}
+
+.stat-label {
+    /* Tamanho menor para a legenda do número */
+    font-size: 0.85rem;
+    /* Cor discreta */
+    color: var(--color-text-muted);
+}
+
+.about-values {
+    /* Organiza os cartões de valores em coluna */
+    display: flex;
+    flex-direction: column;
+    /* Espaço entre os valores */
+    gap: 1.25rem;
+}
+
+.value-card {
+    /* Fundo branco */
+    background-color: var(--color-surface);
+    /* Faixa grossa marrom decorativa na borda esquerda */
+    border-left: 4px solid var(--color-primary);
+    /* Espaçamento interno */
+    padding: 1.25rem 1.5rem;
+    /* Arredonda apenas os cantos da direita */
+    border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+    /* Sombra suave */
+    box-shadow: var(--box-shadow);
+}
+
+/* --------------------------------------------------------------------------
+   8. SEÇÃO: CONTATO & FORMULÁRIO (Totalmente Ajustado para Não Vazar no Celular)
+   -------------------------------------------------------------------------- */
+.contact-grid {
+    /* Ativa o sistema de grade */
+    display: grid;
+    /* 1 coluna no celular */
+    grid-template-columns: 1fr;
+    /* Espaço de separação entre o formulário e as informações */
+    gap: 1.5rem;
+    /* Largura total */
+    width: 100%;
+    /* Máximo de 100% para não estourar a tela */
+    max-width: 100%;
+    /* Garante que os paddings fiquem dentro do limite */
+    box-sizing: border-box;
+}
+
+.contact-info,
+.contact-form-wrapper {
+    /* Fundo branco para os quadros de contato */
+    background-color: var(--color-surface);
+    /* Espaçamento interno das caixas */
+    padding: 1.25rem;
+    /* Cantos arredondados */
+    border-radius: var(--border-radius-md);
+    /* Borda suave */
+    border: 1px solid var(--color-border);
+    /* Sombra das caixas */
+    box-shadow: var(--box-shadow);
+    /* Largura total */
+    width: 100%;
+    /* Impedimento absoluto de estouro de largura */
+    max-width: 100%;
+    /* Inclui bordas no tamanho total */
+    box-sizing: border-box;
+    /* REGRA CHAVE: Permite que os quadros diminuam sem esticar a tela */
+    min-width: 0;
+}
+
+/* Prevenção de estouro para os textos do quadro de informações */
+.contact-info p, 
+.contact-info a,
+.contact-info strong {
+    /* Força quebra automática até de e-mails longos em telas pequenas */
+    overflow-wrap: anywhere;
+    /* Permite quebra de palavra caso necessário */
+    word-break: break-word;
+    /* Garante que não ultrapasse 100% da caixa pai */
+    max-width: 100%;
+}
+
+.info-item {
+    /* Coloca o ícone e o texto lado a lado */
+    display: flex;
+    /* Alinha pelo topo do texto */
+    align-items: flex-start;
+    /* Espaço entre o ícone e o texto */
+    gap: 0.75rem;
+    /* Espaço acima de cada item */
+    margin-top: 1.25rem;
+    /* Largura limite da linha */
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.info-icon {
+    /* Tamanho do emoji do ícone */
+    font-size: 1.35rem;
+    /* Altura da linha justa */
+    line-height: 1;
+    /* IMPEDE que o ícone seja esmagado quando o texto ao lado for grande */
+    flex-shrink: 0;
+}
+
+.info-item > div {
+    /* Permite que o texto dentro da div ocupe todo o espaço sem vazar */
+    min-width: 0;
+    /* Ocupa o restante da largura */
+    flex: 1;
+}
+
+.contact-form-wrapper h3 {
+    /* Espaço abaixo do título do formulário */
+    margin-bottom: 1.25rem;
+}
+
+.contact-form {
+    /* Organiza os campos em coluna vertical */
+    display: flex;
+    flex-direction: column;
+    /* Espaço entre cada grupo de campo */
+    gap: 1rem;
+    /* Largura 100% */
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.form-group {
+    /* Agrupa o rótulo (label) e o campo (input) em coluna */
+    display: flex;
+    flex-direction: column;
+    /* Espaço pequeno entre o rótulo e o campo */
+    gap: 0.35rem;
+    /* Largura 100% */
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+label {
+    /* Deixa o texto do rótulo levemente em negrito */
+    font-weight: 600;
+    /* Tamanho do texto */
+    font-size: 0.9rem;
+    /* Cor do texto do rótulo */
+    color: var(--color-text-main);
+    /* Quebra de texto garantida */
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.required {
+    /* Cor vermelha no asterisco de campo obrigatório */
+    color: var(--color-error);
+}
+
+/* Regra Mestra de Correção dos Campos do Formulário */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+    /* Força a caixa de texto a ocupar exatamente 100% da largura do pai */
+    width: 100% !important;
+    max-width: 100% !important;
+    /* Garante que o padding interno NÃO AUMENTE a caixa */
+    box-sizing: border-box !important;
+    /* Preenchimento interno agradável para toque */
+    padding: 0.75rem 0.85rem;
+    /* Usa a mesma fonte do resto do site */
+    font-family: var(--font-family-base);
+    /* Tamanho de 16px para EVITAR zoom automático inconveniente em iPhones/iOS */
+    font-size: 16px;
+    /* Cor do texto digitado */
+    color: var(--color-text-main);
+    /* Fundo branco da caixa de texto */
+    background-color: #ffffff;
+    /* Borda fina em volta da caixa */
+    border: 1px solid var(--color-border);
+    /* Cantos levemente arredondados */
+    border-radius: var(--border-radius-sm);
+    /* Animação suave para quando o campo recebe foco */
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    /* Remove a aparência nativa e antiga do sistema operacional */
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+/* Estilização da Seta Personalizada da Caixa de Seleção (Select) */
+select {
+    /* Coloca uma setinha em código SVG no fundo do campo de seleção */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235c3a21' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    /* Não repete a setinha */
+    background-repeat: no-repeat;
+    /* Posiciona a setinha na ponta direita */
+    background-position: right 0.75rem center;
+    /* Tamanho do ícone da setinha */
+    background-size: 1em;
+    /* Dá um espaço à direita para o texto não ficar em cima da seta */
+    padding-right: 2.25rem;
+}
+
+textarea {
+    /* Permite ao usuário esticar o campo apenas para baixo, nunca para os lados */
+    resize: vertical;
+    /* Altura mínima da caixa de mensagem */
+    min-height: 100px;
+}
+
+/* Quando o usuário clica para digitar num campo */
+input:focus,
+select:focus,
+textarea:focus {
+    /* Altera a cor da borda para a cor principal marrom */
+    border-color: var(--color-primary);
+    /* Remove a borda padrão do navegador */
+    outline: none;
+    /* Adiciona uma aura/brilho suave ao redor da caixa selecionada */
+    box-shadow: 0 0 0 3px rgba(92, 58, 33, 0.2);
+}
+
+/* Estilo para quando um campo estiver preenchido errado */
+input.is-invalid,
+select.is-invalid,
+textarea.is-invalid {
+    /* Borda vermelha de erro */
+    border-color: var(--color-error);
+    /* Fundo levemente avermelhado */
+    background-color: #fef2f2;
+}
+
+.error-message {
+    /* Tamanho menor para a mensagem de erro */
+    font-size: 0.8rem;
+    /* Cor do texto de erro em vermelho */
+    color: var(--color-error);
+    /* Reserva uma altura mínima para a tela não dar saltos bruscos ao exibir o erro */
+    min-height: 1.1rem;
+    /* Quebra de texto caso a mensagem de erro seja longa */
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.form-feedback {
+    /* Espaçamento interno do quadro de aviso do formulário */
+    padding: 0.85rem;
+    /* Cantos arredondados */
+    border-radius: var(--border-radius-sm);
+    /* Espaço abaixo da caixa */
+    margin-bottom: 1rem;
+    /* Tamanho da fonte */
+    font-size: 0.9rem;
+    /* Texto em negrito */
+    font-weight: 600;
+    /* Proteção contra vazamento de texto */
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* Estilo da caixa de aviso quando o envio der certo */
+.form-feedback.success {
+    /* Fundo verde bem claro */
+    background-color: #f0fdf4;
+    /* Texto em verde escuro */
+    color: var(--color-success);
+    /* Borda verde suave */
+    border: 1px solid #bbf7d0;
+}
+
+/* Estilo da caixa de aviso quando houver erro no formulário */
+.form-feedback.error {
+    /* Fundo vermelho bem claro */
+    background-color: #fef2f2;
+    /* Texto em vermelho escuro */
+    color: var(--color-error);
+    /* Borda vermelha suave */
+    border: 1px solid #fecaca;
+}
+
+/* --------------------------------------------------------------------------
+   9. ESTILIZAÇÃO DOS BOTÕES
+   -------------------------------------------------------------------------- */
+.btn {
+    /* Ativa o modo flex interno do botão */
+    display: inline-flex;
+    /* Centraliza o texto do botão na horizontal */
+    align-items: center;
+    /* Centraliza o texto do botão na vertical */
+    justify-content: center;
+    /* Espaçamento interno do botão */
+    padding: 0.85rem 1.25rem;
+    /* Tamanho da fonte do botão */
+    font-size: 1rem;
+    /* Texto em negrito forte */
+    font-weight: 700;
+    /* Remove sublinhado do texto */
+    text-decoration: none;
+    /* Cantos levemente arredondados */
+    border-radius: var(--border-radius-sm);
+    /* Altera o ponteiro do mouse para a mãozinha de clique */
+    cursor: pointer;
+    /* Borda invisível por padrão para alinhamento */
+    border: 2px solid transparent;
+    /* Suaviza as mudanças de estado */
+    transition: all var(--transition-fast);
+    /* Centraliza o texto */
+    text-align: center;
+    /* Garante que o padding não ultrapasse a largura do botão */
+    box-sizing: border-box;
+    /* Não deixa o botão passar da largura da tela */
+    max-width: 100%;
+}
+
+/* Botão Principal (Marrom Preenchido) */
+.btn-primary {
+    /* Fundo marrom */
+    background-color: var(--color-primary);
+    /* Texto branco */
+    color: #ffffff;
+}
+
+/* Efeito ao passar o mouse ou focar no botão principal */
+.btn-primary:hover,
+.btn-primary:focus {
+    /* Muda para marrom mais escuro */
+    background-color: var(--color-primary-dark);
+    /* Mantém texto branco */
+    color: #ffffff;
+}
+
+/* Botão Secundário (Vazado com Borda Branca) */
+.btn-outline {
+    /* Fundo transparente */
+    background-color: transparent;
+    /* Texto branco */
+    color: #ffffff;
+    /* Borda branca */
+    border-color: #ffffff;
+}
+
+/* Efeito ao passar o mouse no botão secundário */
+.btn-outline:hover,
+.btn-outline:focus {
+    /* Preenche o fundo de branco */
+    background-color: #ffffff;
+    /* Muda o texto para marrom escuro */
+    color: var(--color-primary-dark);
+}
+
+/* Botão de Largura Total */
+.btn-block {
+    /* Ocupa 100% da largura do contêiner onde ele está inserido */
+    width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   10. RODAPÉ DO SITE (FOOTER)
+   -------------------------------------------------------------------------- */
+.site-footer {
+    /* Fundo marrom bem escuro */
+    background-color: var(--color-primary-dark);
+    /* Texto em tom branco com leve transparência */
+    color: rgba(255, 255, 255, 0.8);
+    /* Espaçamento interno superior e inferior */
+    padding: 2rem 0;
+    /* Centraliza todo o texto do rodapé */
+    text-align: center;
+    /* Tamanho levemente menor para o texto do rodapé */
+    font-size: 0.9rem;
+    /* Empurra o rodapé para o final da tela caso haja pouco conteúdo */
+    margin-top: auto;
+}
+
+.site-footer p {
+    /* Cor do texto no rodapé */
+    color: rgba(255, 255, 255, 0.8);
+    /* Espaço entre as linhas do rodapé */
+    margin-bottom: 0.4rem;
+}
+
+.footer-tagline {
+    /* Texto em itálico para o slogan do rodapé */
+    font-style: italic;
+    /* Tamanho menor do texto */
+    font-size: 0.85rem;
+    /* Cor em tom mel/dourado de destaque */
+    color: var(--color-accent);
+}
+
+/* --------------------------------------------------------------------------
+   11. ADAPTAÇÕES PARA TELA DE TABLET E COMPUTADOR (MEDIA QUERIES)
+   Instruções que só funcionam quando a tela for maior que determinado tamanho.
+   -------------------------------------------------------------------------- */
+
+/* Regras aplicadas quando a tela tiver 600px de largura ou mais (Tablets) */
+@media (min-width: 600px) {
+    .hero-actions {
+        /* Coloca os botões do banner lado a lado em vez de empilhados */
+        flex-direction: row;
+    }
+
+    .highlights-grid {
+        /* Divide os destaques em 3 colunas de tamanhos iguais */
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .services-grid {
+        /* Divide os serviços em 2 colunas lado a lado */
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Regras aplicadas quando a tela tiver 900px de largura ou mais (Computadores) */
+@media (min-width: 900px) {
+    body {
+        /* Remove a folga inferior do celular pois o menu vai subir pro topo */
+        padding-bottom: 0;
+    }
+
+    /* Muda o menu do fundo da tela para o topo fixo no computador */
+    .site-header {
+        /* O menu gruda no topo da janela ao rolar */
+        position: sticky;
+        /* Coloca no topo */
+        top: 0;
+        /* Cancela a regra do celular que prendia no fundo */
+        bottom: auto;
+        /* Remove a borda do topo do celular */
+        border-top: none;
+        /* Adiciona a borda fina na parte inferior do menu */
+        border-bottom: 1px solid var(--color-border);
+        /* Sombra leve projetada para baixo */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .header-container {
+        /* Aumenta a altura da barra do menu no computador */
+        height: var(--header-height-desktop);
+    }
+
+    /* Exibe a marca/logo do site no computador */
+    .site-header .logo {
+        /* Ativa o flexbox para alinhar ícone e texto */
+        display: flex;
+        /* Centraliza o ícone e o texto verticalmente */
+        align-items: center;
+        /* Espaço entre o emoji e o texto do nome */
+        gap: 0.5rem;
+        /* Fonte estilo Georgia */
+        font-family: var(--font-family-heading);
+        /* Tamanho do texto da marca */
+        font-size: 1.35rem;
+        /* Cor do texto da marca */
+        color: var(--color-primary-dark);
+        /* Remove o sublinhado do link */
+        text-decoration: none;
+    }
+
+    .logo-icon {
+        /* Tamanho do emoji da logo no computador */
+        font-size: 1.6rem;
+    }
+
+    .main-nav {
+        /* Ajusta a largura da navegação para ocupar apenas o espaço necessário */
+        width: auto;
+    }
+
+    .nav-list {
+        /* Espaçamento entre as opções do menu no computador */
+        gap: 1.5rem;
+    }
+
+    .nav-link {
+        /* Tamanho do texto das opções do menu */
+        font-size: 1rem;
+        /* Espaçamento interno para clique */
+        padding: 8px 16px;
+    }
+
+    /* Reposiciona a linha decorativa do item ativo para a parte de baixo no computador */
+    .nav-link.active::after {
+        top: auto;
+        bottom: -10px;
+        left: 0;
+        right: 0;
+        height: 3px;
+    }
+
+    /* Títulos maiores no computador */
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2.2rem; }
+
+    .hero-banner {
+        /* Aumenta o espaço interno do banner em telas grandes */
+        padding: 4.5rem 2.5rem;
+    }
+
+    .about-content {
+        /* Divide a seção sobre em 2 colunas no computador */
+        display: grid;
+        /* A primeira coluna ocupa 3 partes e a segunda 2 partes do espaço */
+        grid-template-columns: 3fr 2fr;
+    }
+
+    .contact-grid {
+        /* Divide o contato em 2 colunas proporcionais para a tela do PC */
+        grid-template-columns: 1fr 1.2fr;
+    }
+
+    .contact-info,
+    .contact-form-wrapper {
+        /* Aumenta o padding das caixas no computador */
+        padding: 2rem;
+    }
+}
+
+/* Garante que as seções com hidden permaneçam escondidas */
+[hidden] {
+    display: none !important;
+}
